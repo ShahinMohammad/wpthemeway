@@ -41,9 +41,12 @@ function wpthemeway_setup() {
 	add_theme_support( 'post-thumbnails' );
 
 	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary', 'wpthemeway' ),
-	) );
+	
+	register_nav_menus(array(
+        'amarmenu'			=>esc_html__('amitumi','wpthemeway'),
+
+		));
+
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
@@ -105,10 +108,10 @@ function wpthemeway_scripts() {
 	wp_enqueue_style( 'wpthemeway-booststrap', get_template_directory_uri().'/css/bootstrap.min.css' );
 	wp_enqueue_style( 'wpthemeway-fontawesome', get_template_directory_uri().'/css/font-awesome.min.css' );
 
-	wp_enqueue_script( 'wpthemeway-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '1.00', true );
+	wp_enqueue_script( 'wpthemeway-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '1.00', true );
 	
 
-	wp_enqueue_script( 'wpthemeway-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'wpthemeway-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array('jquery'), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -140,3 +143,9 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+
+/**
+ * Load Jetpack compatibility file.
+ */
+require get_template_directory() . '/inc/navwalker/wp_bootstrap_navwalker.php';
